@@ -76,20 +76,35 @@ class LoginController extends Controller
 
     public function googleRedirect(){
 
-        $user =  Socialite::driver('google')->user();
-
-        // First find user with email exists or not if does not exist then create user with name and password and authenticate
-        $user = User::firstOrCreate([
-            'email' => $user->email
-        ], [
-            'name'      => $user->name,
-            'password'  => Hash::make(Str::random(24)),
-            'email_verified_at' => now()
-        ]);
-
-        Auth::login($user, true);
-
-        return redirect('/home');
+        try {
+      
+            $user = Socialite::driver('google')->user();
+       
+            $finduser = User::where('google_id', $user->id)->first();
+       
+            if($finduser){
+       
+                Auth::login($finduser);
+      
+                return redirect(route('home'));
+       
+            }else{
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id'=> $user->id,
+                    'email_verified_at' => now(),
+                    'password' => Hash::make(Str::random(24))
+                ]);
+      
+                Auth::login($newUser);
+      
+                return redirect(route('home'));
+            }
+      
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
 
     }
 }
