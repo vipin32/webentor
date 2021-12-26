@@ -67,7 +67,7 @@
 
                         <div class="row mt-5">
                             <div class="col-md-8 offset-md-4">
-                                <a href="" class="col-sm-4 btn btn-dark">
+                                <a href="{{route('google')}}" class="col-sm-4 btn btn-dark">
                                     Login With Google
                                 </a>
 
