@@ -64,6 +64,18 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="row mt-5">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="" class="col-sm-4 btn btn-dark">
+                                    Login With Google
+                                </a>
+
+                                <a href="{{route('github')}}" class="col-sm-4 btn btn-dark">
+                                    Login With Github
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

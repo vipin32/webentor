@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/sign-in/github', [App\Http\Controllers\Auth\LoginController::class, 'github'])->name('github');
+Route::get('/sign-in/github/redirect', [App\Http\Controllers\Auth\LoginController::class, 'githubRedirect'])->name('githubRedirect');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
