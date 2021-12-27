@@ -10,7 +10,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
 
@@ -83,5 +82,13 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        $(".razorpay-payment-button").addClass("btn btn-primary btn-sm my-2");
+        $(".razorpay-payment-button").wrap( "<center></center>" );
+    </script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
